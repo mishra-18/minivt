@@ -3,6 +3,9 @@
 Open-source 2D VTuber renderer built from scratch — no Live2D, no game engine.
 Layered PNGs → triangle meshes → face tracking → real-time deformation.
 
+
+https://github.com/user-attachments/assets/aaca2a62-3cac-41ce-8538-69679d095d69
+
 ## Run
 
 ```bash
