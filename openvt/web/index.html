@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>OpenVT</title>
+<style>
+  html,body{margin:0;height:100%;background:transparent;overflow:hidden;
+    font:12px/1.4 ui-monospace,Consolas,monospace;color:#eee}
+  body.checker{background:
+    repeating-conic-gradient(#2a2a2e 0 25%,#232327 0 50%) 0 0/24px 24px}
+  body.green{background:#00b040}
+  #cv{position:fixed;inset:0;width:100%;height:100%;display:block}
+  #ui{position:fixed;top:0;left:0;padding:6px;display:flex;gap:4px;flex-wrap:wrap;
+    align-items:center;z-index:5}
+  #ui.hide{display:none}
+  #ui button{font:inherit;background:#1b1b20cc;color:#ddd;border:1px solid #444;
+    border-radius:4px;padding:3px 7px;cursor:pointer}
+  #ui button:hover{background:#2c2c34cc}
+  #stat{background:#1b1b20cc;border:1px solid #444;border-radius:4px;padding:3px 7px;
+    white-space:pre}
+  #panel{position:fixed;top:36px;left:6px;max-height:80vh;overflow:auto;z-index:5;
+    background:#1b1b20e6;border:1px solid #444;border-radius:5px;padding:6px}
+  #panel.hide{display:none}
+  .row{display:grid;grid-template-columns:96px 130px 52px 16px;align-items:center;gap:4px}
+  .row span{opacity:.85}
+  .row .val{text-align:right;opacity:.7}
+  .row.ovr span{color:#ffd166}
+  .row input{width:130px}
+  .row b{cursor:pointer;opacity:.45;text-align:center}
+  .row b:hover{opacity:1;color:#ff8080}
+  #bCam{background:linear-gradient(180deg,#7c4dff,#5e35d6);border:1px solid #9575ff;
+    color:#fff;font-weight:700;padding:6px 14px;border-radius:6px;letter-spacing:.2px;
+    animation:pulse 2.2s ease-in-out infinite}
+  #bCam:hover{background:linear-gradient(180deg,#8f63ff,#6b41e8)}
+  @keyframes pulse{0%,100%{box-shadow:0 2px 10px #7c4dff55}
+                   50%{box-shadow:0 2px 20px #7c4dffbb}}
+  #bCam.on{animation:none;background:#232329;border-color:#3a5;color:#8f8;
+    font-weight:400;box-shadow:none}
+</style>
+</head>
+<body>
+<canvas id="cv"></canvas>
+<div id="ui">
+  <div id="stat">loading…</div>
+  <button id="bCam">▶&nbsp; Click to enable Camera</button>
+  <button id="bMouse">cursor mode</button>
+  <button id="bMir">mirror (M)</button>
+  <button id="bBg">bg</button>
+  <button id="bPan">params (H)</button>
+</div>
+<div id="panel" class="hide"></div>
+<video id="vid" playsinline muted
+  style="display:none;position:fixed;right:6px;bottom:6px;width:180px;
+         border:1px solid #444;border-radius:4px;z-index:6;transform:scaleX(-1)"></video>
+<script type="module" src="./js/main.js"></script>
+</body>
+</html>

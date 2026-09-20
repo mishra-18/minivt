@@ -1,0 +1,838 @@
+{
+ "name": "demo",
+ "canvas": {
+  "width": 1024,
+  "height": 1024
+ },
+ "params": [
+  {
+   "id": "headX",
+   "min": -30,
+   "max": 30,
+   "default": 0
+  },
+  {
+   "id": "headY",
+   "min": -30,
+   "max": 30,
+   "default": 0
+  },
+  {
+   "id": "headAngleZ",
+   "min": -30,
+   "max": 30,
+   "default": 0
+  },
+  {
+   "id": "bodyX",
+   "min": -1,
+   "max": 1,
+   "default": 0
+  },
+  {
+   "id": "eyeOpenL",
+   "min": 0,
+   "max": 1,
+   "default": 1
+  },
+  {
+   "id": "eyeOpenR",
+   "min": 0,
+   "max": 1,
+   "default": 1
+  },
+  {
+   "id": "eyeBallX",
+   "min": -1,
+   "max": 1,
+   "default": 0
+  },
+  {
+   "id": "eyeBallY",
+   "min": -1,
+   "max": 1,
+   "default": 0
+  },
+  {
+   "id": "mouthOpen",
+   "min": 0,
+   "max": 1,
+   "default": 0
+  },
+  {
+   "id": "mouthForm",
+   "min": -1,
+   "max": 1,
+   "default": 0
+  },
+  {
+   "id": "browY",
+   "min": -1,
+   "max": 1,
+   "default": 0
+  },
+  {
+   "id": "breath",
+   "min": 0,
+   "max": 1,
+   "default": 0
+  },
+  {
+   "id": "hairFrontSway",
+   "min": -1,
+   "max": 1,
+   "default": 0
+  },
+  {
+   "id": "hairSideSway",
+   "min": -1,
+   "max": 1,
+   "default": 0
+  }
+ ],
+ "nodes": [
+  {
+   "id": "root",
+   "pivot": [
+    512,
+    512
+   ]
+  },
+  {
+   "id": "body",
+   "parent": "root",
+   "pivot": [
+    512,
+    1000
+   ]
+  },
+  {
+   "id": "head",
+   "parent": "body",
+   "pivot": [
+    512,
+    600
+   ]
+  },
+  {
+   "id": "face_group",
+   "parent": "head",
+   "pivot": [
+    512,
+    495
+   ]
+  },
+  {
+   "id": "eye_l",
+   "parent": "face_group",
+   "pivot": [
+    440,
+    502
+   ]
+  },
+  {
+   "id": "eye_r",
+   "parent": "face_group",
+   "pivot": [
+    584,
+    502
+   ]
+  }
+ ],
+ "layers": [
+  {
+   "id": "hair_back",
+   "texture": "textures/hair_back.png",
+   "parent": "head",
+   "z": 0,
+   "pos": [
+    275,
+    237
+   ],
+   "pivot": [
+    512,
+    300
+   ],
+   "mesh": {
+    "grid": [
+     4,
+     6
+    ]
+   }
+  },
+  {
+   "id": "torso",
+   "texture": "textures/torso.png",
+   "parent": "body",
+   "z": 1,
+   "pos": [
+    281,
+    557
+   ],
+   "mesh": {
+    "grid": [
+     3,
+     4
+    ]
+   }
+  },
+  {
+   "id": "face",
+   "texture": "textures/face.png",
+   "parent": "head",
+   "z": 2,
+   "pos": [
+    327,
+    297
+   ],
+   "mesh": {
+    "grid": [
+     3,
+     3
+    ]
+   }
+  },
+  {
+   "id": "blush_l",
+   "texture": "textures/blush_l.png",
+   "parent": "face_group",
+   "z": 3,
+   "pos": [
+    380,
+    525
+   ],
+   "blend": "multiply"
+  },
+  {
+   "id": "blush_r",
+   "texture": "textures/blush_r.png",
+   "parent": "face_group",
+   "z": 3,
+   "pos": [
+    540,
+    525
+   ],
+   "blend": "multiply"
+  },
+  {
+   "id": "eye_white_l",
+   "texture": "textures/eye_white_l.png",
+   "parent": "eye_l",
+   "z": 4,
+   "pos": [
+    389,
+    461
+   ]
+  },
+  {
+   "id": "eye_white_r",
+   "texture": "textures/eye_white_r.png",
+   "parent": "eye_r",
+   "z": 4,
+   "pos": [
+    533,
+    461
+   ]
+  },
+  {
+   "id": "eye_iris_l",
+   "texture": "textures/eye_iris_l.png",
+   "parent": "eye_l",
+   "z": 5,
+   "pos": [
+    407,
+    471
+   ],
+   "maskedBy": [
+    "eye_white_l"
+   ]
+  },
+  {
+   "id": "eye_iris_r",
+   "texture": "textures/eye_iris_r.png",
+   "parent": "eye_r",
+   "z": 5,
+   "pos": [
+    551,
+    471
+   ],
+   "maskedBy": [
+    "eye_white_r"
+   ]
+  },
+  {
+   "id": "brow_l",
+   "texture": "textures/brow_l.png",
+   "parent": "face_group",
+   "z": 6,
+   "pos": [
+    394,
+    426
+   ]
+  },
+  {
+   "id": "brow_r",
+   "texture": "textures/brow_r.png",
+   "parent": "face_group",
+   "z": 6,
+   "pos": [
+    538,
+    426
+   ]
+  },
+  {
+   "id": "mouth",
+   "texture": "textures/mouth.png",
+   "parent": "face_group",
+   "z": 7,
+   "pos": [
+    485,
+    587
+   ],
+   "pivot": [
+    512,
+    600
+   ],
+   "mesh": {
+    "grid": [
+     4,
+     4
+    ],
+    "clip": false
+   }
+  },
+  {
+   "id": "hair_side_l",
+   "texture": "textures/hair_side_l.png",
+   "parent": "head",
+   "z": 8,
+   "pos": [
+    285,
+    408
+   ],
+   "pivot": [
+    325,
+    415
+   ],
+   "mesh": {
+    "grid": [
+     2,
+     6
+    ]
+   }
+  },
+  {
+   "id": "hair_side_r",
+   "texture": "textures/hair_side_r.png",
+   "parent": "head",
+   "z": 8,
+   "pos": [
+    657,
+    408
+   ],
+   "pivot": [
+    699,
+    415
+   ],
+   "mesh": {
+    "grid": [
+     2,
+     6
+    ]
+   }
+  },
+  {
+   "id": "hair_front",
+   "texture": "textures/hair_front.png",
+   "parent": "head",
+   "z": 9,
+   "pos": [
+    319,
+    266
+   ],
+   "pivot": [
+    512,
+    290
+   ],
+   "mesh": {
+    "grid": [
+     6,
+     3
+    ]
+   }
+  }
+ ],
+ "bindings": [
+  {
+   "type": "transform",
+   "target": "head",
+   "param": "headX",
+   "keys": [
+    {
+     "v": -30,
+     "tx": -28
+    },
+    {
+     "v": 30,
+     "tx": 28
+    }
+   ]
+  },
+  {
+   "type": "transform",
+   "target": "face_group",
+   "param": "headX",
+   "keys": [
+    {
+     "v": -30,
+     "tx": -22
+    },
+    {
+     "v": 30,
+     "tx": 22
+    }
+   ]
+  },
+  {
+   "type": "transform",
+   "target": "hair_front",
+   "param": "headX",
+   "keys": [
+    {
+     "v": -30,
+     "tx": -8
+    },
+    {
+     "v": 30,
+     "tx": 8
+    }
+   ]
+  },
+  {
+   "type": "transform",
+   "target": "hair_back",
+   "param": "headX",
+   "keys": [
+    {
+     "v": -30,
+     "tx": 12
+    },
+    {
+     "v": 30,
+     "tx": -12
+    }
+   ]
+  },
+  {
+   "type": "transform",
+   "target": "head",
+   "param": "headY",
+   "keys": [
+    {
+     "v": -30,
+     "ty": 14
+    },
+    {
+     "v": 30,
+     "ty": -14
+    }
+   ]
+  },
+  {
+   "type": "transform",
+   "target": "face_group",
+   "param": "headY",
+   "keys": [
+    {
+     "v": -30,
+     "ty": 16
+    },
+    {
+     "v": 30,
+     "ty": -16
+    }
+   ]
+  },
+  {
+   "type": "transform",
+   "target": "hair_front",
+   "param": "headY",
+   "keys": [
+    {
+     "v": -30,
+     "ty": 6
+    },
+    {
+     "v": 30,
+     "ty": -6
+    }
+   ]
+  },
+  {
+   "type": "transform",
+   "target": "head",
+   "param": "headAngleZ",
+   "keys": [
+    {
+     "v": -30,
+     "rot": -18
+    },
+    {
+     "v": 30,
+     "rot": 18
+    }
+   ]
+  },
+  {
+   "type": "transform",
+   "target": "body",
+   "param": "bodyX",
+   "keys": [
+    {
+     "v": -1,
+     "rot": -4,
+     "tx": -10
+    },
+    {
+     "v": 1,
+     "rot": 4,
+     "tx": 10
+    }
+   ]
+  },
+  {
+   "type": "transform",
+   "target": "body",
+   "param": "breath",
+   "keys": [
+    {
+     "v": 0
+    },
+    {
+     "v": 1,
+     "sy": 1.015,
+     "ty": -3
+    }
+   ]
+  },
+  {
+   "type": "transform",
+   "target": "eye_l",
+   "param": "eyeOpenL",
+   "keys": [
+    {
+     "v": 0,
+     "sy": 0.06
+    },
+    {
+     "v": 1
+    }
+   ]
+  },
+  {
+   "type": "transform",
+   "target": "eye_r",
+   "param": "eyeOpenR",
+   "keys": [
+    {
+     "v": 0,
+     "sy": 0.06
+    },
+    {
+     "v": 1
+    }
+   ]
+  },
+  {
+   "type": "transform",
+   "target": "eye_iris_l",
+   "param": "eyeBallX",
+   "keys": [
+    {
+     "v": -1,
+     "tx": -12
+    },
+    {
+     "v": 1,
+     "tx": 12
+    }
+   ]
+  },
+  {
+   "type": "transform",
+   "target": "eye_iris_r",
+   "param": "eyeBallX",
+   "keys": [
+    {
+     "v": -1,
+     "tx": -12
+    },
+    {
+     "v": 1,
+     "tx": 12
+    }
+   ]
+  },
+  {
+   "type": "transform",
+   "target": "eye_iris_l",
+   "param": "eyeBallY",
+   "keys": [
+    {
+     "v": -1,
+     "ty": -8
+    },
+    {
+     "v": 1,
+     "ty": 8
+    }
+   ]
+  },
+  {
+   "type": "transform",
+   "target": "eye_iris_r",
+   "param": "eyeBallY",
+   "keys": [
+    {
+     "v": -1,
+     "ty": -8
+    },
+    {
+     "v": 1,
+     "ty": 8
+    }
+   ]
+  },
+  {
+   "type": "morph",
+   "target": "mouth",
+   "param": "mouthOpen",
+   "keys": [
+    {
+     "v": 0,
+     "offsets": []
+    },
+    {
+     "v": 1,
+     "offsets": [
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      5.08,
+      0.0,
+      5.08,
+      0.0,
+      5.08,
+      0.0,
+      5.08,
+      0.0,
+      5.08,
+      0.0,
+      13.54,
+      0.0,
+      13.54,
+      0.0,
+      13.54,
+      0.0,
+      13.54,
+      0.0,
+      13.54,
+      0.0,
+      22.0,
+      0.0,
+      22.0,
+      0.0,
+      22.0,
+      0.0,
+      22.0,
+      0.0,
+      22.0
+     ]
+    }
+   ]
+  },
+  {
+   "type": "transform",
+   "target": "mouth",
+   "param": "mouthForm",
+   "keys": [
+    {
+     "v": -1,
+     "sx": 0.75,
+     "ty": 4
+    },
+    {
+     "v": 1,
+     "sx": 1.3,
+     "ty": -3
+    }
+   ]
+  },
+  {
+   "type": "transform",
+   "target": "brow_l",
+   "param": "browY",
+   "keys": [
+    {
+     "v": -1,
+     "ty": 10
+    },
+    {
+     "v": 1,
+     "ty": -12
+    }
+   ]
+  },
+  {
+   "type": "transform",
+   "target": "brow_r",
+   "param": "browY",
+   "keys": [
+    {
+     "v": -1,
+     "ty": 10
+    },
+    {
+     "v": 1,
+     "ty": -12
+    }
+   ]
+  },
+  {
+   "type": "transform",
+   "target": "hair_front",
+   "param": "hairFrontSway",
+   "keys": [
+    {
+     "v": -1,
+     "rot": 10,
+     "tx": -6
+    },
+    {
+     "v": 1,
+     "rot": -10,
+     "tx": 6
+    }
+   ]
+  },
+  {
+   "type": "transform",
+   "target": "hair_back",
+   "param": "hairFrontSway",
+   "keys": [
+    {
+     "v": -1,
+     "rot": 5
+    },
+    {
+     "v": 1,
+     "rot": -5
+    }
+   ]
+  },
+  {
+   "type": "transform",
+   "target": "hair_side_l",
+   "param": "hairSideSway",
+   "keys": [
+    {
+     "v": -1,
+     "rot": 16
+    },
+    {
+     "v": 1,
+     "rot": -16
+    }
+   ]
+  },
+  {
+   "type": "transform",
+   "target": "hair_side_r",
+   "param": "hairSideSway",
+   "keys": [
+    {
+     "v": -1,
+     "rot": 16
+    },
+    {
+     "v": 1,
+     "rot": -16
+    }
+   ]
+  }
+ ],
+ "physics": [
+  {
+   "output": "hairFrontSway",
+   "mode": "lag",
+   "stiffness": 140,
+   "damping": 9,
+   "gain": 2.5,
+   "inputs": [
+    {
+     "param": "headX",
+     "weight": 1.0
+    },
+    {
+     "param": "headAngleZ",
+     "weight": 0.6
+    },
+    {
+     "param": "headY",
+     "weight": 0.3
+    }
+   ]
+  },
+  {
+   "output": "hairSideSway",
+   "mode": "lag",
+   "stiffness": 90,
+   "damping": 6,
+   "gain": 3.0,
+   "inputs": [
+    {
+     "param": "headX",
+     "weight": 1.0
+    },
+    {
+     "param": "headAngleZ",
+     "weight": 0.8
+    }
+   ]
+  },
+  {
+   "output": "bodyX",
+   "mode": "follow",
+   "stiffness": 40,
+   "damping": 8,
+   "gain": 1.0,
+   "inputs": [
+    {
+     "param": "headX",
+     "weight": 0.7
+    }
+   ]
+  }
+ ],
+ "mapping": {
+  "mirror": true
+ }
+}
